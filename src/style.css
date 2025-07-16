@@ -1,0 +1,120 @@
+:root {
+    --dark-blue: #004b91;
+    --blue: #3089b3;
+    --orange: #ffac30;
+    --grey: #535b5f;
+    --dark-grey: #131313;
+    --beige: #fde0a2;
+}
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    color: var(--dark-grey);
+}
+
+.main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    align-items: center;
+    background-color: var(--beige);
+}
+
+h1 {
+    padding: 35px 0px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    background-color: var(--dark-blue);
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.data > div  {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    background-color: #3089b3;
+    padding: 50px;
+    border-radius: 20px;
+
+}
+
+h2, form, .min-max-temp {
+    grid-column: span 3;
+    text-align: center;
+}
+
+.current-temp {
+    grid-column: 2 / 3;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+    padding: 0px 5px;
+}
+
+.icon {
+    justify-self: end;
+    padding: 3px;
+}
+
+.windspeed {
+    grid-column: 2 / 4;
+    text-align: right;
+}
+
+form {
+    width: 40vw;
+    display: flex;
+    gap: 5px;
+}
+input {
+    padding: 7px 10px;
+    width: 80%;
+    border-radius: 10px;
+    border: var(--dark-blue) 2px solid;
+    font-size: 1.2rem;
+}
+
+button {
+    width: 20%;
+    border-radius: 10px;
+    background-color: var(--dark-blue);
+    font-size: 1rem;
+    color: white;
+    border: none;
+
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--grey);
+}
+
+.windspeed, .humidity {
+    font-size: 1.4rem;
+}
+
+.min-max-temp {
+    font-size: 1.6rem;
+}

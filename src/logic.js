@@ -20,8 +20,6 @@ async function getData() {
         const icon = await currentConditions.icon
 
         changeDom(adress, temp, tempmin, tempmax, humidity, windspeed, icon)
-
-        console.log(json)
         
     }
     catch (err) {
