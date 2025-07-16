@@ -1,7 +1,8 @@
+import { changeDom, search } from "./DOM.js"
 
 //LOGIC
+let apiUrl = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/velence,hungary/today?key=5B78CX4HYG46A9BQQEVDXMA6M&unitGroup=metric&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed'
 async function getData() {
-    let apiUrl = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/velence,hungary/today?key=5B78CX4HYG46A9BQQEVDXMA6M&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed'
     try {
         const responde = await fetch(apiUrl)
         const json = await responde.json()
@@ -29,8 +30,8 @@ async function getData() {
 
 function checkWeather(currentLocation) {
     currentLocation = search.value
-    apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${currentLocation}/today?key=5B78CX4HYG46A9BQQEVDXMA6M&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed`
+    apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${currentLocation}/today?key=5B78CX4HYG46A9BQQEVDXMA6M&unitGroup=metric&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed`
     getData()
 }
 
-export {checkWeather}
+export { checkWeather, getData }
