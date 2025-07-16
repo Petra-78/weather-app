@@ -11,18 +11,28 @@ btn.addEventListener("click", (e) => {
 } )
 
 
-function changeDom(loc, temp, min, max, hum, wind) {
-const location = document.querySelector(".location")
-const currentTemp = document.querySelector(".current-temp")
-const minMaxTemp = document.querySelector(".min-max-temp")
-const humidity = document.querySelector(".humidity")
-const windSpeed = document.querySelector(".windspeed")
+async function changeDom(loc, temp, min, max, hum, wind, icon) {
+  const location = document.querySelector(".location");
+  const currentTemp = document.querySelector(".current-temp");
+  const weatherIcon = document.querySelector(".icon");
+  const minMaxTemp = document.querySelector(".min-max-temp");
+  const humidity = document.querySelector(".humidity");
+  const windSpeed = document.querySelector(".windspeed");
 
-location.textContent = loc
-currentTemp.textContent = `${temp} °C`
-minMaxTemp.textContent = `${min}° / ${max}°`
-humidity.textContent = `${hum} %`
-windSpeed.textContent = `${wind} km/h`
+  location.textContent = loc;
+  currentTemp.textContent = `${temp} °C`;
+  minMaxTemp.textContent = `${min}° / ${max}°`;
+  humidity.textContent = `${hum} %`;
+  windSpeed.textContent = `${wind} km/h`;
+
+  try {
+    const iconModule = await import(`./icons/${icon}.png`);
+    weatherIcon.src = iconModule.default;
+  } catch (err) {
+    console.error("Failed to load icon:", icon, err);
+    weatherIcon.src = "./icons/clear-day.png";
+  }
 }
+
 
 export {changeDom, search}

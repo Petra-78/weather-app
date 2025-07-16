@@ -1,7 +1,7 @@
 import { changeDom, search } from "./DOM.js"
 
 //LOGIC
-let apiUrl = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/velence,hungary/today?key=5B78CX4HYG46A9BQQEVDXMA6M&unitGroup=metric&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed'
+let apiUrl = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/velence,hungary/today?key=5B78CX4HYG46A9BQQEVDXMA6M&unitGroup=metric&iconSet=icons2&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed,icon'
 async function getData() {
     try {
         const responde = await fetch(apiUrl)
@@ -17,8 +17,9 @@ async function getData() {
         const temp = await currentConditions.temp
         const humidity = await currentConditions.humidity
         const windspeed = await currentConditions.windspeed
+        const icon = await currentConditions.icon
 
-        changeDom(adress, temp, tempmin, tempmax, humidity, windspeed)
+        changeDom(adress, temp, tempmin, tempmax, humidity, windspeed, icon)
 
         console.log(json)
         
@@ -28,9 +29,11 @@ async function getData() {
     }
 }
 
+getData()
+
 function checkWeather(currentLocation) {
     currentLocation = search.value
-    apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${currentLocation}/today?key=5B78CX4HYG46A9BQQEVDXMA6M&unitGroup=metric&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed`
+    apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${currentLocation}/today?key=5B78CX4HYG46A9BQQEVDXMA6M&unitGroup=metric&iconSet=icons2&include=current&elements=datetime,tempmax,tempmin,temp,humidity,windspeed,icon`
     getData()
 }
 
