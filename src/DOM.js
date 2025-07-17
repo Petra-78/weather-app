@@ -1,15 +1,14 @@
-
-import {checkWeather } from "./logic.js";
+import { checkWeather } from "./logic.js";
 
 //DOM
 
-const search = document.querySelector("input")
-const btn = document.querySelector("button")
+const search = document.querySelector("input");
+const btn = document.querySelector("button");
 
 btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    checkWeather();
-} )
+  e.preventDefault();
+  checkWeather();
+});
 
 async function changeDom(loc, temp, min, max, hum, wind, icon) {
   const location = document.querySelector(".location");
@@ -25,7 +24,7 @@ async function changeDom(loc, temp, min, max, hum, wind, icon) {
   humidity.textContent = `Humidity: ${hum} %`;
   windSpeed.textContent = `Wind speed: ${wind} km/h`;
 
-  changeBgc(icon)
+  changeBgc(icon);
 
   try {
     const iconModule = await import(`./icons/${icon}.png`);
@@ -37,35 +36,32 @@ async function changeDom(loc, temp, min, max, hum, wind, icon) {
 }
 
 function changeBgc(icon) {
-    const container = document.querySelector(".container")
-    if (
+  const container = document.querySelector(".container");
+  if (
     icon === "clear-day" ||
     icon === "partly-cloudy-day" ||
     icon === "showers-day" ||
     icon === "thunder-showers-day"
-    ) {
-
+  ) {
     container.style.backgroundColor = "var(--orange)";
-    } else if (
+  } else if (
     icon === "rain" ||
     icon === "showers-night" ||
     icon === "sleet" ||
     icon === "rain-snow" ||
     icon === "rain-snow-showers-day" ||
     icon === "rain-snow-showers-night"
-    ) {
-
+  ) {
     container.style.backgroundColor = "var(--blue)";
-    } else if (
+  } else if (
     icon === "cloudy" ||
     icon === "fog" ||
     icon === "wind" ||
     icon === "partly-cloudy-night" ||
     icon === "snow"
-    ) {
-    
+  ) {
     container.style.backgroundColor = "var(--grey)";
-    } else if (
+  } else if (
     icon === "clear-night" ||
     icon === "snow-showers-night" ||
     icon === "snow-showers-day" ||
@@ -73,11 +69,11 @@ function changeBgc(icon) {
     icon === "thunder" ||
     icon === "thunder-rain" ||
     icon === "thunder-showers-night"
-    ) {
+  ) {
     container.style.backgroundColor = "var(--dark-blue)";
-    } else {
-    container.style.backgroundColor = "#222"; 
-    }
+  } else {
+    container.style.backgroundColor = "#222";
+  }
 }
 
-export {changeDom, search}
+export { changeDom, search };

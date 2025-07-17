@@ -1,4 +1,4 @@
 import { getData } from "./logic.js";
-import './style.css';
+import "./style.css";
 
 getData();
